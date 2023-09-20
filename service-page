@@ -1,0 +1,343 @@
+<?php
+	/**
+	 *	Template Name: Digitalce Single Services
+	 */
+	get_header();
+
+	$template_directory = get_template_directory_uri();
+?>
+<section id="seo__top-wrapper" style="background: #20c997;">
+	<div class="container-fluid py-4" style="height: 100%;;">
+		<div class="row py-4 top__wrapper-content align-items-center justify-content-center" style="height: 100%;">
+			<div class="col-md-11 py-4 ">
+				<h1 class="mb-md-5 py-4 top__wrapper-title" style="color:#000000"; text-align: left;><?php the_field('top_wrapper_title'); ?></h1>
+				<p class="mt-4 top__wrapper-text w-100" style="text-align: left">
+					<?php
+						echo nl2br( get_field('top_wrapper_description') );
+					?>
+				</p>
+				
+				<p class="py-3">
+				<a href="#popup1" class="mb-md-5 contact__seo-btn text-uppercase" data-popup-open="popup-1">CONTACT US</a>
+			
+				</div>
+		</div>
+	</div>
+</section>
+<section id="benefits_section" class="py-3">
+	<div class="container pt-5 pb-3">
+		<div class="row justify-content-center mb-4">
+			<h2 class="section__title mb-5 text-center"><?php the_field('benefits_title'); ?></h2>
+		</div>
+		<div class="row mt-4">
+			<p class="descriptio"><?php the_field('benefits_description'); ?></p>
+		</div>
+	</div>
+</section>
+
+<section id="why_hire_section" class="py-3 pb-5">
+	<div class="container pt-5 pb-3">
+		<div class="row justify-content-center mb-4">
+			<h2 class="section__title mb-5 text-center"><?php the_field('why_hire_title'); ?></h2>
+		</div>
+		<div class="row ">
+			<p class="descriptio" ><?php the_field('why_hire_description'); ?></p>
+		</div>
+	</div>
+</section>
+
+<section id="call_to_action_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 d-flex flex-column justify-content-center align-items-start">
+
+                  <h2 class="contact__seo-title"><?php the_field('call_to_action_title1'); ?></h2>
+        
+        <a href="/#contact__section" class="contact__seo-btn text-uppercase">CONTACT US</a>
+      </div>
+      <div class="col-md-4">
+                  <img src="http://stage.digitalce.com/wp-content/themes/digitalce/assets/img/dog-section.png" class="img-fluid" alt="Search engine optimization services by SEO experts at Digitalce">
+              </div>
+    </div>
+  </div>
+</section> 
+<section id="why__section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="section__title text-center"><?php the_field('why_section_title'); ?></h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+
+      <?php if ( have_rows('why_section_cubes') ): ?>
+        <?php while ( have_rows('why_section_cubes') ) : the_row(); ?>
+          <div class="col-md-4">
+            <div class="why__block why__block-<?php echo get_sub_field('cube_colors'); ?>">
+              <h3 class="why__block-title"><?php the_sub_field('cube_title'); ?></h3>
+              <p class="why__block-text">
+                <?php the_sub_field('cube_description'); ?>
+              </p>
+            </div>
+          </div>
+        <?php endwhile; ?>
+      <?php endif; ?>
+
+    </div>
+  </div>
+</section>
+<section id="process__section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="section__title text-center"><?php the_field('process_title'); ?></h2>
+      </div>
+    </div>
+    <div class="row process__blocks">
+
+        <?php
+          $i = 1;
+          if ( have_rows('process_list') ): ?>
+        <?php while ( have_rows('process_list') ) : the_row(); ?>
+
+          <?php if( $i%2 == 0 ) : ?>
+            <div class="col-md-12 process__block-row row">
+              <div class="process__block process__block-<?php echo $i; ?>">
+                <div class="process__block-content mr-5">
+                  <h2 class="process__block-title"><?php the_sub_field('item_title'); ?></h2>
+                  <p class="process__block-text"><?php the_sub_field('item_description'); ?></p>
+                </div>
+              </div>
+            </div>
+          <?php else: ?>
+            <div class="col-md-12 process__block-row row justify-content-end">
+              <div class="process__block process__block-<?php echo $i; ?>">
+                <div class="process__block-content ml-5">
+                  <h2 class="process__block-title"><?php the_sub_field('item_title'); ?></h2>
+                  <p class="process__block-text"><?php the_sub_field('item_description'); ?></p>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+
+          <?php $i++; ?>
+        <?php endwhile; ?>
+      <?php endif; ?>
+
+    </div>
+  </div>
+</section>
+
+<section id="case__section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="section__title text-center"><?php the_field('case_studies_title'); ?></h2>
+		  			<p class="section__descriptio" ><?php the_field('case_description'); ?></p>
+
+      </div>
+    </div>
+    <div class="row justify-content-center">
+
+      <?php
+        if ( ! empty( get_field('case_studies_link_1') ) ) {
+          $case_studies_link_1 = url_to_postid( get_field('case_studies_link_1') );
+        }
+
+        if ( ! empty( get_field('case_studies_link_2') ) ) {
+          $case_studies_link_2 = url_to_postid( get_field('case_studies_link_2') );
+        }
+       if ( ! empty( get_field('case_studies_link_3') ) ) {
+          $case_studies_link_3 = url_to_postid( get_field('case_studies_link_3') );
+        }
+
+        $related_posts_arr = [ $case_studies_link_1, $case_studies_link_2, $case_studies_link_3 ];
+      ?>
+      <?php
+        $related_cases_args = array(
+          'post_type' => 'cases',
+					'post__in' => $related_posts_arr,
+          'orderby' => 'name',
+          'order' => 'DESC'
+        );
+
+        $related_cases = new WP_Query( $related_cases_args );
+      ?>
+      <?php if ( $related_cases->have_posts() ): ?>
+        <?php while ( $related_cases->have_posts() ) : $related_cases->the_post(); ?>
+
+          <div class="col-md-4 case__row-img">
+    					<div class="case__img">
+    						<div class="case__img-src case__bg-<?php echo get_field('case_main_color'); ?> d-flex justify-content-center align-items-center">
+    							<img src="<?php echo get_field('case_main_image')['url']; ?>" alt="<?php echo get_the_title(); ?> - SEO case study of search engine optimization agency Digitalce" width="50%">
+    						</div>
+    						<div class="case__img-footer d-flex align-items-center justify-content-between px-3">
+    							<b class="text-uppercase"><?php the_title(); ?></b>
+    							<a href="<?php echo get_the_permalink(); ?>" class="case__img-btn text-uppercase text-center">Learn more</a>
+    						</div>
+    					</div>
+    			</div>
+
+        <?php endwhile; ?>
+        <?php wp_reset_query(); ?>
+      <?php endif; ?>
+
+    </div>
+  </div>
+</section>
+<section id="call_to_action_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 d-flex flex-column justify-content-center align-items-start">
+
+                  <h2 class="contact__seo-title"><?php the_field('call_to_action_title2'); ?></h2>
+        
+        <a href="/#contact__section" class="contact__seo-btn text-uppercase">CONTACT US</a>
+      </div>
+      <div class="col-md-4">
+                  <img src="http://stage.digitalce.com/wp-content/themes/digitalce/assets/img/dog-section.png" class="img-fluid" alt="Search engine optimization services by SEO experts at Digitalce">
+              </div>
+    </div>
+  </div>
+</section> 
+<section id="faq__section">
+  <div class="container-fluid">
+    <div class="container">
+     
+      <div class="col align-self-center faq__questions">
+        <div class="faq__questions-content">
+          <h2 class="faq__title"><?php the_field('top_faq_title'); ?></h2>
+			<h4 class="faq__title"><?php the_field('top_faq_description'); ?></h4>
+
+          <?php if ( have_rows('faq_questions') ): ?>
+            <?php $i = 0; ?>
+            <?php while ( have_rows('faq_questions') ) : the_row(); ?>
+
+              <details class="faq__question-content">
+                <summary class="faq__question faq__question-<?php echo $i; ?>" data-id="<?php echo $i; ?>"><?php the_sub_field('faq_question'); ?></summary>
+                <div class=" faq__answer-<?php echo $i; ?> ml-3 mt-2"><?php the_sub_field('faq_answer'); ?></div>
+              </details>
+
+              <?php $i++; ?>
+            <?php endwhile; ?>
+          <?php endif; ?>
+			
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="articles__section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="section__title text-center">Related Articles</h2>
+      </div>
+    </div>
+    <div class="row">
+
+      <?php
+        wp_reset_query();
+        wp_reset_postdata();
+
+        $args_recent = [
+          'posts_per_page' => 3,
+          'post_type' => 'post',
+          'post_status' => 'publish'
+        ];
+
+        $recent_posts = new WP_Query( $args_recent );
+      ?>
+
+      <?php if ( $recent_posts->have_posts() ): ?>
+        <?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+
+          <div class="col-xl-4 col-md-6 col-sm-12 mb-5">
+            <div class="blog__article">
+              <a href="<?php echo get_the_permalink(); ?>">
+
+                <?php if ( ! empty ( get_the_post_thumbnail_url( get_the_ID() ) ) ): ?>
+                    <div class="blog__article-img" style="background: url(<?php echo get_the_post_thumbnail_url( get_the_ID() ); ?>);background-size: cover;"></div>
+                <?php else: ?>
+                    <div class="default__img d-flex bg-gray justify-content-center align-items-center">
+                      <img src="<?php echo $template_directory; ?>/assets/img/blog/images-interface.svg" alt="default image">
+                    </div>
+				  
+				  "<?php echo $template_directory; ?>/assets/img/animated-logo-4.png"
+                <?php endif; ?>
+
+              </a>
+              <div class="blog__article-card">
+                <div class="blog__article-header d-flex justify-content-between">
+
+                  <?php if ( ! empty( get_the_category() ) ): ?>
+                    <b class="article__category"><?php echo get_the_category( get_the_ID() )[0]->name; ?></b>
+                  <?php endif; ?>
+
+                  <img src="<?php echo get_avatar_url( get_the_ID() ); ?>" class="blog__article-author" />
+                </div>
+                <div class="blog__article-content mb-5">
+                  <a href="<?php echo get_the_permalink(); ?>">
+                    <h2 class="blog__title"><?php the_title(); ?></h2>
+                  </a>
+                </div>
+
+                <a href="<?php echo get_the_permalink(); ?>" class="blog__article-read-btn">
+                  <img src="<?php echo $template_directory; ?>/assets/img/blog/top_article_arrow.svg" class="img-fluid" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+        <?php endwhile; ?>
+      <?php endif; ?>
+      <?php
+        wp_reset_query();
+        wp_reset_postdata();
+      ?>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<div class="popup" data-popup="popup-1">
+  <div class="popup-inner">
+				<p class="contact__section-title "  style="text-align: center" >Let's talk</p>
+    <?php echo do_shortcode('[contact-form-7 id="22258" title="pop_up_contact_us"]'); ?>
+    <a href="#" class="popup-close" data-popup-close="popup-1">x</a>
+  </div>
+</div>
+
+<script>
+$(function() {
+  // Open
+  $('[data-popup-open]').on('click', function(e) {
+    var targeted_popup_class = $(this).attr('data-popup-open');    
+    $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);    
+    e.preventDefault();
+  });
+  
+  // Close
+  $('[data-popup-close]').on('click', function(e) {
+    var targeted_popup_class = $(this).attr('data-popup-close');
+    $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+    e.preventDefault();
+  });  
+  
+});
+</script>
+
+
+<?php get_template_part('template-parts/contact-seo', null, ['data' => [
+    'alt' => 'Search engine optimization services by SEO experts at Digitalce'
+  ] ]); ?>
+
+<?php
+  get_footer();
+?>
